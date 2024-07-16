@@ -5,17 +5,17 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        num_dict = {}  # Dictionary to store numbers and their indices
-    
+        # create empty dict val: index
+        seenMap = {}
+        # loop through nums
         for index, num in enumerate(nums):
-            complement = target - num  # Calculate the complement required to reach the target
-        
-        # If the complement is in the dictionary, return its index along with the current index
-            if complement in num_dict:
-                return [num_dict[complement], index]
-        
-        # Otherwise, store the current number and its index in the dictionary
-            num_dict[num] = index
-    
-    # If no solution is found, return an empty list or raise an exception, depending on the requirements
-        return []
+        # calculate complement to the num
+            diff = target - num
+        # look for it in the hashmap
+            if diff in seenMap:
+        # if its there, return compliment index in hashmap and index of num
+                return [seenMap[diff], index]
+        # if not there add num: index to hashmap
+            seenMap[num] = index
+        # return if no pair found
+        return
